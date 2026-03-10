@@ -1,62 +1,21 @@
 package com.example.animecatalog.data
 
 import com.example.anime_catalog.R
-import com.example.animecatalog.model.Anime
+import com.example.animecatalog.model.Recipe
 
 class Datasource {
-    fun loadAnimeList(): List<Anime> {
+    fun loadRecipeList(): List<Recipe> {
         return listOf(
-            Anime(
-                 R.string.anime1,
-                 R.string.anime1_description,
-                 R.drawable.anime1
-            ),
-            Anime(
-                 R.string.anime2,
-                 R.string.anime2_description,
-                 R.drawable.anime2
-            ),
-            Anime(
-                 R.string.anime3,
-                 R.string.anime3_description,
-                 R.drawable.anime3
-            ),
-            Anime(
-                 R.string.anime4,
-                 R.string.anime4_description,
-                 R.drawable.anime4
-            ),
-            Anime(
-                 R.string.anime5,
-                 R.string.anime5_description,
-                 R.drawable.anime5
-            ),
-            Anime(
-                 R.string.anime6,
-                 R.string.anime6_description,
-                 R.drawable.anime6
-            ),
-            Anime(
-                 R.string.anime7,
-                 R.string.anime7_description,
-                 R.drawable.anime7
-            ),
-            Anime(
-                 R.string.anime8,
-                 R.string.anime8_description,
-                 R.drawable.anime8
-            ),
-            Anime(
-                 R.string.anime9,
-                 R.string.anime9_description,
-                 R.drawable.anime9
-            ),
-            Anime(
-                 R.string.anime10,
-                 R.string.anime10_description,
-                 R.drawable.anime10
-            )
-
+            Recipe(R.string.recipe1, R.string.recipe1_description, R.drawable.recipe1),
+            Recipe(R.string.recipe2, R.string.recipe2_description, R.drawable.recipe2),
+            Recipe(R.string.recipe3, R.string.recipe3_description, R.drawable.recipe3),
+            Recipe(R.string.recipe4, R.string.recipe4_description, R.drawable.recipe4),
+            Recipe(R.string.recipe5, R.string.recipe5_description, R.drawable.recipe5),
+            Recipe(R.string.recipe6, R.string.recipe6_description, R.drawable.recipe6),
+            Recipe(R.string.recipe7, R.string.recipe7_description, R.drawable.recipe7),
+            Recipe(R.string.recipe8, R.string.recipe8_description, R.drawable.recipe8),
+            Recipe(R.string.recipe9, R.string.recipe9_description, R.drawable.recipe9),
+            Recipe(R.string.recipe10, R.string.recipe10_description, R.drawable.recipe10)
         )
     }
 }

@@ -17,6 +17,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -25,7 +26,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.anime_catalog.ui.theme.Anime_CatalogTheme
 import com.example.animecatalog.data.Datasource
-import com.example.animecatalog.model.Anime
+import com.example.animecatalog.model.Recipe
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,22 +38,21 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    AnimeCatalogApp()
-                }
+                    RecipeCatalogApp()
             }
         }
     }
 }
 
 @Composable
-fun AnimeCard(anime: Anime, modifier: Modifier = Modifier) {
+fun RecipeCard(recipe: Recipe, modifier: Modifier = Modifier) {
     Card(
         modifier = modifier
     ) {
         Column {
             Image(
-                painter = painterResource(id = anime.imageResourceId),
-                contentDescription = stringResource(anime.titleResourceId),
+                painter = painterResource(id = recipe.imageResourceId),
+                contentDescription = stringResource(recipe.titleResourceId),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(450.dp),
@@ -60,13 +60,13 @@ fun AnimeCard(anime: Anime, modifier: Modifier = Modifier) {
             )
 
             Text(
-                text = stringResource(anime.titleResourceId),
+                text = stringResource(recipe.titleResourceId),
                 modifier = Modifier.padding(16.dp),
                 style = MaterialTheme.typography.headlineSmall
             )
 
             Text(
-                text = stringResource(anime.descriptionResourceId),
+                text = stringResource(recipe.descriptionResourceId),
                 modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 16.dp),
                 style = MaterialTheme.typography.bodyMedium
             )
@@ -75,11 +75,11 @@ fun AnimeCard(anime: Anime, modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun AnimeList(animeList: List<Anime>, modifier: Modifier = Modifier) {
+fun RecipeList(recipeList: List<Recipe>, modifier: Modifier = Modifier) {
     LazyColumn(modifier = modifier) {
-        items(animeList) { anime ->
-            AnimeCard(
-                anime = anime,
+        items(recipeList) { recipe ->
+            RecipeCard(
+                recipe = recipe,
                 modifier = Modifier.padding(8.dp)
             )
         }
@@ -87,22 +87,12 @@ fun AnimeList(animeList: List<Anime>, modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun AnimeCatalogApp() {
-    AnimeList(
-        animeList = Datasource().loadAnimeList()
-    )
-}
+fun RecipeCatalogApp() {
+    val recipeList = remember { Datasource().loadRecipeList() }
 
-@Preview(showBackground = true)
-@Composable
-private fun AnimeCardPreview() {
-    Anime_CatalogTheme {
-        AnimeCard(
-            anime = Anime(
-                titleResourceId = R.string.anime1,
-                descriptionResourceId = R.string.anime1_description,
-                imageResourceId = R.drawable.anime1
-            )
-        )
+    RecipeList(
+        recipeList = recipeList,
+        modifier = Modifier
+    )
     }
 }
